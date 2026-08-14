@@ -50,11 +50,12 @@ jobs:
       name: Upload artifacts (release generic RP2350)
       with:
         name: firmware-release-generic-RP2350
-        archive: false
+        archive: ${{ startsWith(github.ref, 'refs/tags/') }}
         path: |
           firmware/*.zip
 
     - name: Build packages for Adafruit Feather RP2040 Scorpio
+      if: startsWith(github.ref, 'refs/tags/')    
       shell: bash
       run: |
         cd build
@@ -68,13 +69,14 @@ jobs:
 
     - uses: actions/upload-artifact@v7.0.1
       name: Upload artifacts (release for Adafruit_Feather_RP2040)
+      if: startsWith(github.ref, 'refs/tags/')      
       with:
         name: firmware-release-adafruit-scorpio-RP2040
-        archive: false
         path: |
           firmware/*.zip
 
     - name: Build packages for Adafruit ItsyBitsy RP2040
+      if: startsWith(github.ref, 'refs/tags/')
       shell: bash
       run: |
         cd build
@@ -89,13 +91,14 @@ jobs:
 
     - uses: actions/upload-artifact@v7.0.1
       name: Upload artifacts (release for Adafruit_ItsyBitsy_RP2040)
+      if: startsWith(github.ref, 'refs/tags/')      
       with:
         name: firmware-release-adafruit-itsybitsy-RP2040
-        archive: false
         path: |
           firmware/*.zip
 
     - name: Build packages for Pimoroni Plasma Stick RP2040 W
+      if: startsWith(github.ref, 'refs/tags/')    
       shell: bash
       run: |
         cd build
@@ -110,13 +113,14 @@ jobs:
 
     - uses: actions/upload-artifact@v7.0.1
       name: Upload artifacts (release for Pimoroni_Plasma_Stick_RP2040_W)
+      if: startsWith(github.ref, 'refs/tags/')      
       with:
         name: firmware-release-pimoroni-plasma-stick-RP2040-W
-        archive: false
         path: |
           firmware/*.zip
 
     - name: Build packages for Pimoroni Plasma 2040
+      if: startsWith(github.ref, 'refs/tags/')    
       shell: bash
       run: |
         cd build
@@ -130,13 +134,14 @@ jobs:
 
     - uses: actions/upload-artifact@v7.0.1
       name: Upload artifacts (release for Pimoroni_Plasma_RP2040)
+      if: startsWith(github.ref, 'refs/tags/')      
       with:
         name: firmware-release-pimoroni-plasma-RP2040
-        archive: false
         path: |
           firmware/*.zip
 
     - name: Build packages for Pimoroni Plasma RP2350
+      if: startsWith(github.ref, 'refs/tags/')    
       shell: bash
       run: |
         cd build
@@ -150,9 +155,9 @@ jobs:
 
     - uses: actions/upload-artifact@v7.0.1
       name: Upload artifacts (release for Pimoroni_Plasma_RP2350)
+      if: startsWith(github.ref, 'refs/tags/')      
       with:
         name: firmware-release-pimoroni-plasma-RP2350
-        archive: false
         path: |
           firmware/*.zip
 
